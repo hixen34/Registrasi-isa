@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pendaftaran ISA</title>
+
+<style>
+body{
+  margin:0;
+  font-family:system-ui,Arial;
+  background:#0f172a;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+}
+.box{
+  width:340px;
+  background:#111827;
+  padding:20px;
+  border-radius:12px;
+}
+label{
+  display:block;
+  margin-top:10px;
+  font-size:14px;
+}
+input,textarea,select{
+  width:100%;
+  margin-top:6px;
+  padding:8px;
+  border-radius:6px;
+  border:none;
+  outline:none;
+}
+button{
+  width:100%;
+  margin-top:14px;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+  background:#22c55e;
+  font-weight:600;
+  cursor:pointer;
+}
+button:disabled{
+  background:#4b5563;
+  cursor:not-allowed;
+}
+.small{
+  font-size:12px;
+  color:#9ca3af;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+  <b>Halo admin, saya mau mendaftar ingin menjadi anggota ISA, nih formulir saya</b>
+
+  <form id="formISA"
+        action="https://formsubmit.co/EMAILKAMU@gmail.com"
+        method="POST">
+
+    <!-- setting FormSubmit -->
+    <input type="hidden" name="_subject" value="Pendaftaran Anggota ISA">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+
+    <!-- anti bot -->
+    <input type="text" name="_honey" style="display:none">
+
+    <label>Nama
+      <input type="text" name="Nama" required minlength="2">
+    </label>
+
+    <label>Umur
+      <input type="number" name="Umur" required min="10" max="80">
+    </label>
+
+    <label>Asal
+      <input type="text" name="Asal" required>
+    </label>
+
+    <label>Status
+      <select name="Status" required>
+        <option value="">Pilih</option>
+        <option>Pelajar</option>
+        <option>Mahasiswa</option>
+        <option>Umum</option>
+    </select>
+    </label>
+
+    <label>Alasan untuk masuk
+      <textarea name="Alasan" rows="4" required minlength="10"></textarea>
+    </label>
+
+    <button id="btn" type="submit">Kirim</button>
+    <div class="small" id="info"></div>
+  </form>
+</div>
+
+<script>
+const form = document.getElementById("formISA");
+const btn  = document.getElementById("btn");
+const info = document.getElementById("info");
+
+form.addEventListener("submit", function(){
+  btn.disabled = true;
+  btn.textContent = "Mengirim...";
+  info.textContent = "Tunggu sebentar...";
+});
+</script>
+
+</body>
+</html>
